@@ -1,0 +1,45 @@
+[   86.390978] 我的嵌套: commit.c/ jbd2_journal_commit_transaction/ jbd2_journal_get_descriptor_buffer
+[   86.391020] 我的块号: journal.c/ jbd2_journal_get_descriptor_buffer, jbd2_journal_next_log_block: 1081662
+[   86.391143] 现在要将descriptor block插入到log_bufs列表，des blk磁盘地址是1081662
+[   86.391156] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081663
+[   86.391168] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081663
+[   86.391171] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 525044
+[   86.391193] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081664
+[   86.391198] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081664
+[   86.391201] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 0
+[   86.391216] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081665
+[   86.391223] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081665
+[   86.391226] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 525160
+[   86.394204] 我的嵌套: commit.c/ journal_submit_commit_record/ jbd2_journal_get_descriptor_buffer
+[   86.394228] 我的块号: journal.c/ jbd2_journal_get_descriptor_buffer, jbd2_journal_next_log_block: 1081666
+[   86.394277] 现在要在journal_submit_commit_record中提交buffer_head1081666
+[   86.598408] 我的嵌套: commit.c/ jbd2_journal_commit_transaction/ jbd2_journal_get_descriptor_buffer
+[   86.598444] 我的块号: journal.c/ jbd2_journal_get_descriptor_buffer, jbd2_journal_next_log_block: 1081667
+[   86.598484] 现在要将descriptor block插入到log_bufs列表，des blk磁盘地址是1081667
+[   86.598495] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081668
+[   86.598505] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081668
+[   86.598508] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 525044
+[   86.598529] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081669
+[   86.598535] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081669
+[   86.598537] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 525160
+[   86.598573] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081670
+[   86.598579] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081670
+[   86.598581] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 0
+[   86.598597] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081671
+[   86.598601] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081671
+[   86.598604] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 2097186
+[   86.598641] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081672
+[   86.598646] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081672
+[   86.598649] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 524296
+[   86.598663] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081673
+[   86.598668] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081673
+[   86.598670] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 1
+[   86.598684] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081674
+[   86.598689] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081674
+[   86.598692] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 524297
+[   86.598706] 我的打印: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_next_log_block: blocknr: 1081675
+[   86.598710] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: blocknr: 1081675
+[   86.598713] 我的块号: commit.c/ jbd2_journal_commit_transaction, jbd2_journal_write_metadata_buffer: jh2bh(jh)->b_blocknr: 561112
+[   86.599095] 我的嵌套: commit.c/ journal_submit_commit_record/ jbd2_journal_get_descriptor_buffer
+[   86.599121] 我的块号: journal.c/ jbd2_journal_get_descriptor_buffer, jbd2_journal_next_log_block: 1081676
+[   86.599159] 现在要在journal_submit_commit_record中提交buffer_head1081676

@@ -1,34 +1,33 @@
-#!/bin/python
+#! /bin/python3
+'''
+Author: Ziyan ZHANG zhangzy273@mail2.sysu.edu.cn
+Date: 2023-07-29 19:45:10
+LastEditors: Ziyan ZHANG zhangzy273@mail2.sysu.edu.cn
+LastEditTime: 2023-07-29 19:48:35
+FilePath: /draw-block-address/extract_blocknr_of_next_blk.py
+Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+'''
+lines = []  # 存储行号
+block_numbers_1 = []  # 存储第一种格式的块号
+block_numbers_2 = []  # 存储第二种格式的块号
 
-import re
+with open('kernel_log.txt', 'r') as file:
+    for line_number, line in enumerate(file, start=1):
+        line = line.rstrip()  # 去除行尾的换行符和空格
+        if '我的块号' in line:
+            if 'blocknr:' in line:
+                block_number = line.split('blocknr: ')[1]
+                block_numbers_1.append((line_number, block_number))
+            elif 'b_blocknr:' in line:
+                block_number = line.split('b_blocknr: ')[1]
+                block_numbers_2.append((line_number, block_number))
+            lines.append(line_number)
 
-def extract_numbers(lines):
-    number_pattern = r'\b(\d+)\b$'
-    num_array_1 = []
-    num_array_2 = []
-    
-    for line in lines:
-        if line.startswith("我的打印jbd2_journal_commit_transaction") or line.startswith("我的打印jbd2_journal_get_descriptor_buffer"):
-            match = re.search(number_pattern, line)
-            if match:
-                number = int(match.group(1))
-                if line.startswith("我的打印jbd2_journal_commit_transaction"):
-                    num_array_1.append(number)
-                else:
-                    num_array_2.append(number)
-    
-    return num_array_1, num_array_2
+# 打印结果
+print("第一种格式的块号:")
+for line_number, block_number in block_numbers_1:
+    print(f"行号: {line_number}, 块号: {block_number}")
 
-# 示例输入
-lines = [
-    "我的打印jbd2_journal_commit_transaction, jbd2_journal_next_log_block - blocknr: 1083125",
-    "其他行没有数字",
-    "我的打印jbd2_journal_get_descriptor_buffer, jbd2_journal_next_log_block - blocknr: 1083128",
-    "我的打印jbd2_journal_commit_transaction, jbd2_journal_next_log_block - blocknr: 987654321",
-    "其他行没有数字"
-]
-
-# 提取数字并打印结果
-numbers_1, numbers_2 = extract_numbers(lines)
-print("Numbers from '我的打印jbd2_journal_commit_transaction' lines:", numbers_1)
-print("Numbers from '我的打印jbd2_journal_get_descriptor_buffer' lines:", numbers_2)
+print("\n第二种格式的块号:")
+for line_number, block_number in block_numbers_2:
+    print(f"行号: {line_number}, 块号: {block_number}")
