@@ -3,7 +3,7 @@
 Author: Ziyan ZHANG zhangzy273@mail2.sysu.edu.cn
 Date: 2023-07-29 19:45:10
 LastEditors: Ziyan ZHANG zhangzy273@mail2.sysu.edu.cn
-LastEditTime: 2023-08-01 08:37:27
+LastEditTime: 2023-08-01 09:41:01
 FilePath: /draw-block-address/extract_blocknr_of_next_blk.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -84,7 +84,7 @@ with open(log_file, 'r') as file:
 # 上面的10个数组合成一个数组, 按照数组每一项的第一个维度大小排序
 block_numbers = sorted(jbd2_journal_next_log_blocks + jbd2_journal_write_metadata_buffers \
     + zj_journal_next_log_blocks + zj_journal_write_metadata_buffers \
-    + jbd_jh_b_blocknrs + zj_jh_b_blocknrs \
+    # + jbd_jh_b_blocknrs + zj_jh_b_blocknrs \
     + jbd2_commit_trans_submits + zj_commit_trans_submits \
     + jbd2_submit_commit_record_submits + zj_submit_commit_record_submits, key=lambda x: x[0])
 
@@ -93,58 +93,58 @@ def plot_10lines():
     # 将三个数组画散点图到一张图像上, 数组的每一项分别作为横纵坐标. 并把每个点的横纵坐标打印到图中
     plt.scatter(*zip(*jbd2_journal_next_log_blocks), c='r', marker='o', label='jbd2_next_log_block')
     for line_number, block_number in jbd2_journal_next_log_blocks:
-        plt.text(line_number, block_number, block_number, ha='center', va='bottom', fontsize=10)
+        plt.text(line_number, block_number, block_number%100, ha='center', va='bottom', fontsize=10)
 
     plt.scatter(*zip(*zj_journal_next_log_blocks), c='k', marker='d', label='zj_next_log_block')
     for line_number, block_number in zj_journal_next_log_blocks:
-        plt.text(line_number, block_number, block_number, ha='center', va='bottom', fontsize=10)
+        plt.text(line_number, block_number, block_number%100, ha='center', va='bottom', fontsize=10)
 
 
     plt.scatter(*zip(*jbd2_journal_write_metadata_buffers), c='b', marker='x', label='jbd2_write_metadata_buffer')
     plt.scatter(*zip(*zj_journal_write_metadata_buffers), c='c', marker='s', label='zj_write_metadata_buffer')
 
-    plt.scatter(*zip(*jbd_jh_b_blocknrs), c='g', marker='^', label='jbd_jh_b_blocknrs')
-    plt.scatter(*zip(*zj_jh_b_blocknrs), c='m', marker='v', label='zj_jh_b_blocknrs')
+    # plt.scatter(*zip(*jbd_jh_b_blocknrs), c='g', marker='^', label='jbd_jh_b_blocknrs')
+    # plt.scatter(*zip(*zj_jh_b_blocknrs), c='m', marker='v', label='zj_jh_b_blocknrs')
 
     # 下面打印*_submits结尾的数组
     
     plt.scatter(*zip(*jbd2_commit_trans_submits), c='y', marker='*', label='jbd2_commit_trans_submits')
     for line_number, block_number in jbd2_commit_trans_submits:
-        plt.text(line_number, block_number, block_number, ha='center', va='bottom', fontsize=10)
+        plt.text(line_number, block_number, block_number%100, ha='center', va='bottom', fontsize=10)
 
     plt.scatter(*zip(*zj_commit_trans_submits), c='orange', marker='*', label='zj_commit_trans_submits')
     for line_number, block_number in zj_commit_trans_submits:
-        plt.text(line_number, block_number, block_number, ha='center', va='bottom', fontsize=10)
+        plt.text(line_number, block_number, block_number%100, ha='center', va='bottom', fontsize=10)
 
     plt.scatter(*zip(*jbd2_submit_commit_record_submits), c='brown', marker='*', label='jbd2_submit_commit_record_submits')
     for line_number, block_number in jbd2_submit_commit_record_submits:
-        plt.text(line_number, block_number, block_number, ha='center', va='bottom', fontsize=10)
+        plt.text(line_number, block_number, block_number%100, ha='center', va='bottom', fontsize=10)
 
     plt.scatter(*zip(*zj_submit_commit_record_submits), c='black', marker='*', label='zj_submit_commit_record_submits')
     for line_number, block_number in zj_submit_commit_record_submits:
-        plt.text(line_number, block_number, block_number, ha='center', va='bottom', fontsize=10)
+        plt.text(line_number, block_number, block_number%100, ha='center', va='bottom', fontsize=10)
     
 
 # # 分别设定y轴范围为[520000, 530000], [1082300, 1082350], [2097000, 2098000]. 仿照上面的代码段
 
-plt.subplot(222)
-plt.ylim(1081560, 1081590)
+plt.subplot(422)
+plt.plot(*zip(*block_numbers), c='gray', marker='', label='block_numbers')
 plot_10lines()
 
-# plt.subplot(424)
-# plt.ylim(520000, 570000)
-# plot_10lines()
-
-plt.subplot(224)
-plt.ylim(90000, 140000)
+plt.subplot(424)
+plt.plot(*zip(*block_numbers), c='gray', marker='', label='block_numbers')
 plot_10lines()
 
-# plt.subplot(428)
-# plt.ylim(-5000, 35000)
-# plot_10lines()
+plt.subplot(426)
+plt.plot(*zip(*block_numbers), c='gray', marker='', label='block_numbers')
+plot_10lines()
+
+plt.subplot(428)
+plt.plot(*zip(*block_numbers), c='gray', marker='', label='block_numbers')
+plot_10lines()
 
 plt.subplot(121)
-# plt.plot(*zip(*block_numbers), c='gray', marker='', label='block_numbers')
+plt.plot(*zip(*block_numbers), c='gray', marker='', label='block_numbers')
 plot_10lines()
 plt.legend()
 plt.title(log_file_create_time)
